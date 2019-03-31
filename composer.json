@@ -1,0 +1,28 @@
+{
+  "name": "weblogic/yii2-installer",
+  "type": "yii2-extension",
+  "minimum-stability": "dev",
+  "description": "Yii2 installer for Yii2 applications",
+  "keywords": [
+    "yii2",
+    "installer"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Waut Van den Abbeele",
+      "email": "waut@weblogiconline.eu",
+      "homepage": "https://www.weblogiconline.eu"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-swiftmailer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "weblogic\\installer\\": "src/"
+    }
+  }
+}
