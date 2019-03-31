@@ -23,19 +23,17 @@ the module on your application structure, you should be set to go.
 You can download it and place it on your third party libraries folder but we highly recommend that you install it 
 through [composer](http://getcomposer.org/download/).
 
+You can download it and place it on your third party libraries folder but we highly recommend that you install it through [composer](http://getcomposer.org/download/).
+ 
 Either run
-
 ```bash
-$ composer require 2amigos/yii2-usuario:~1.0
-```
-
+$ composer require weblogic/yii2-installer:*
+``` 
 or add
-
 ```
-"2amigos/yii2-usuario": "~1.0"
+"weblogic/yii2-installer": "*"
 ```
-
-to the `require` section of your `composer.json` file.
+ to the `require` section of your `composer.json` file.
 
 #### Step 2 - Configure migrations
 

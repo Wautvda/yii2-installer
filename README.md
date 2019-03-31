@@ -15,21 +15,16 @@ Yii2-Installer provides a web interface for installation of a yii2 project. It i
 
 ## Installation
 
-You can download it and place it on your third party libraries folder but we highly recommend that you install it 
- through [composer](http://getcomposer.org/download/).
+You can download it and place it on your third party libraries folder but we highly recommend that you install it through [composer](http://getcomposer.org/download/).
  
  Either run
- 
- ```bash
- $ composer require weblogic/yii2-installer:*
- ```
- 
- or add
- 
- ```
- "eblogic/yii2-installer": "*"
- ```
- 
+```bash
+$ composer require weblogic/yii2-installer:*
+``` 
+or add
+```
+"weblogic/yii2-installer": "*"
+```
  to the `require` section of your `composer.json` file.
 
 ## Documentation
