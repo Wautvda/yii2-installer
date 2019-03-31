@@ -1,11 +1,14 @@
 <?php
 /**
- * @var $model \weblogic\installer\models\MailerSettings
- * @var $errorMsg string
+ * @var $model \weblogic\installer\models\GeneralSettings
  */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+$timeZones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
+if(!isset($model->timeZoneIndex)){
+	$model->timeZone = array_search('Europe/Brussels', $timeZones);
+}
 ?>
 
 <div id="database-form" class="panel panel-default">
@@ -27,14 +30,18 @@ use yii\widgets\ActiveForm;
 				    'autofocus' => 'on',
                     'autocomplete' => 'off',
                     'class' => 'form-control',
-                ])->hint('The email host') ?>
+                ])->hint('The application name displayed on the website') ?>
 		</div>
 
-		<?php if (!empty($errorMsg)) { ?>
-			<div class="alert alert-danger">
-				<strong><?= $errorMsg ?></strong>
-			</div>
-		<?php } ?>
+        <div class="form-group">
+			<?=
+                $form->field($model, 'timeZoneIndex')->dropdownList(
+				$timeZones,
+				[
+					'autocomplete' => 'off',
+					'class' => 'form-control'
+				])->hint('The timezone most frequently used in the application') ?>
+        </div>
 
 		<?= Html::submitButton('Next', ['class' => 'btn btn-primary']) ?>
 

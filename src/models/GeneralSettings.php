@@ -7,12 +7,16 @@ use yii\base\Model;
 class GeneralSettings extends Model
 {
 	public $applicationName;
+	public $timeZone;
+	public $timeZoneIndex;
 
 	public function rules()
 	{
 		return [
-			[['applicationName'], 'required'],
+			[['applicationName', 'timeZone'], 'required'],
 			[['applicationName'], 'string', 'max' => 128],
+			[['timeZone'], 'string'],
+			[['timeZoneIndex'], 'integer'],
 		];
 	}
 
@@ -20,6 +24,8 @@ class GeneralSettings extends Model
 	{
 		return [
 			'applicationName' => 'Application name',
+			'timeZoneIndex' => 'Time zone',
+			'timeZone' => 'Time zone',
 		];
 	}
 }

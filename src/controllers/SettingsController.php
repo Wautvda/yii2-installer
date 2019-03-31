@@ -1,10 +1,12 @@
 <?php
 namespace weblogic\installer\controllers;
 
+use DateTimeZone;
 use weblogic\installer\helpers\enums\Configuration;
 use weblogic\installer\helpers\InstallerHelper;
 use weblogic\installer\models\GeneralSettings;
 use Yii;
+use yii\base\Module;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
@@ -12,6 +14,13 @@ use yii\widgets\ActiveForm;
 class SettingsController extends Controller
 {
 	public $layout = 'setup';
+	private $timeZones;
+
+	function __construct(string $id, Module $module, array $config = [])
+	{
+		parent::__construct($id, $module, $config);
+		$this->timeZones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
+	}
 
 	/**
 	 * Checks if the application has been installed already
@@ -59,8 +68,14 @@ class SettingsController extends Controller
 				return ActiveForm::validate($settings);
 			}
 
+			if(!isset($settings->timeZone))
+			{
+				$settings->timeZone = $this->timeZones[$settings->timeZoneIndex];
+			}
+
 			if ($settings->validate()) {
 				$config[Configuration::APP_NAME] = $settings->applicationName;
+				$config[Configuration::APP_TIMEZONE] = $this->timeZones[$settings->timeZoneIndex];
 
 				InstallerHelper::set(Configuration::CONFIG_FILE, $config);
 
@@ -85,6 +100,8 @@ class SettingsController extends Controller
 
 		$settings = new GeneralSettings();
 		$settings->applicationName = $config[Configuration::APP_NAME];
+		$settings->timeZone = $config[Configuration::APP_TIMEZONE];
+		$settings->timeZoneIndex = array_search($config[Configuration::APP_TIMEZONE], $this->timeZones);
 
 		return $settings;
 	}

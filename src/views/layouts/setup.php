@@ -27,7 +27,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left"><?= Yii::t('app', 'Made possible by <a href="https://www.weblogiconline.eu" target="_blank">Weblogic</a>')?>.</p>
+            <p class="pull-left"><?= Yii::t('app', 'Made possible by <a href="{0}" target="_blank">{1}</a>', [Yii::$app->getModule('installer')->poweredByWebsite, Yii::$app->getModule('installer')->poweredByName])?>.</p>
         </div>
     </footer>
 

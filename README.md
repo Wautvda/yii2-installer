@@ -5,8 +5,9 @@ Yii2-Installer provides a web interface for installation of a yii2 project. It i
 
 ## Features
 
-- Setup database correctly
-- Execute all migrations if migrations are setup correctly (more in [migrations](docs/migrations.md))
+- Setup database connection
+- Execute all migrations if migrations are setup correctly (more in [migrations](docs/installation/migrations.md)) and migrationoption is turned on (see [configuration](docs/configuration/settings.md)
+- Setup mailer configuration
 - Setup other configurations like:
     - Application Name
     - Admin Email
@@ -14,33 +15,36 @@ Yii2-Installer provides a web interface for installation of a yii2 project. It i
 
 ## Installation
 
-This document will guide you through the process of installing Yii2-Installer using **composer**.
+You can download it and place it on your third party libraries folder but we highly recommend that you install it 
+ through [composer](http://getcomposer.org/download/).
+ 
+ Either run
+ 
+ ```bash
+ $ composer require weblogic/yii2-installer:*
+ ```
+ 
+ or add
+ 
+ ```
+ "eblogic/yii2-installer": "*"
+ ```
+ 
+ to the `require` section of your `composer.json` file.
 
-Add Yii2-installer to the require section of your **composer.json** file:
+## Documentation
 
-```php
-{
-    "require": {
-        "weblogic/yii2-installer": "*"
-    }
-}
-```
-
-And run following command to download extension using **composer**:
-
-```bash
-$ composer install
-```
+Refer to [Documentation](docs/index.md)
 
 ## Roadmap
 
 - [ ] Installation wizard
 - [ ] Add admin user
 
-## Change Log
+## Changelog
 
-Refer to [Change Logs](CHANGE.md)
+Refer to [Changelog](CHANGELOG.md)
 
 ## License
 
-Yii2-installer is released under the MIT License. See the bundled [LICENSE](LICENSE.md) for details.
+Yii2-installer is released under the BSD License. See the bundled [LICENSE](LICENSE.md) for details.

@@ -17,6 +17,7 @@ use yii\widgets\DetailView; ?>
 			'model' => $model,
 			'attributes' => [
 				'applicationName',
+                'timeZone'
 			],
 		]) ?>
 

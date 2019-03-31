@@ -39,6 +39,12 @@ class DatabaseController extends Controller
 			return $this->redirect(Yii::$app->homeUrl);
 		}
 
+		if ($action->id === 'migrate' || $action->id === 'migrate-up' || $action->id === 'migrate-finished') {
+			if (!$this->module->executeMigrations) {
+				return $this->redirect(Yii::$app->urlManager->createUrl('//installer/mailer/index'));
+			}
+		}
+
 		return parent::beforeAction($action);
 	}
 

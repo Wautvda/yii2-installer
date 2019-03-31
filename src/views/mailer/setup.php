@@ -15,6 +15,12 @@ use yii\widgets\ActiveForm;
 	<div class="panel-body">
 		<p>Adapt the Mailer configuration. If you’re not sure about these, please contact your administrator or web host.</p>
 
+		<?php if (!empty($errorMsg)) { ?>
+            <div class="alert alert-danger">
+                <strong><?= $errorMsg ?></strong>
+            </div>
+		<?php } ?>
+
 		<?php
 			$form = ActiveForm::begin([
                 'enableAjaxValidation'  => false
@@ -98,12 +104,6 @@ use yii\widgets\ActiveForm;
         </div>
 
 		<hr/>
-
-		<?php if (!empty($errorMsg)) { ?>
-			<div class="alert alert-danger">
-				<strong><?= $errorMsg ?></strong>
-			</div>
-		<?php } ?>
 
 		<?= Html::submitButton('Next', ['class' => 'btn btn-primary']) ?>
 
