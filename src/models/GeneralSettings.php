@@ -2,6 +2,7 @@
 
 namespace weblogic\installer\models;
 
+use Yii;
 use yii\base\Model;
 
 class GeneralSettings extends Model
@@ -23,9 +24,9 @@ class GeneralSettings extends Model
 	public function attributeLabels()
 	{
 		return [
-			'applicationName' => 'Application name',
-			'timeZoneIndex' => 'Time zone',
-			'timeZone' => 'Time zone',
+			'applicationName'   => Yii::t('installerSettings', 'Application name'),
+			'timeZoneIndex'     => Yii::t('installerSettings', 'Time zone'),
+			'timeZone'          => Yii::t('installerSettings', 'Time zone'),
 		];
 	}
 }

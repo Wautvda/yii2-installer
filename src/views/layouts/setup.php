@@ -16,7 +16,7 @@ AppAsset::register($this);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode('Setup Wizard') ?></title>
+        <title><?= Yii::$app->name .' | ' . Yii::t('installerGeneral', 'Installation wizard') ?></title>
         <?php $this->head() ?>
     </head>
 	<body>
@@ -27,7 +27,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left"><?= Yii::t('app', 'Made possible by <a href="{0}" target="_blank">{1}</a>', [Yii::$app->getModule('installer')->poweredByWebsite, Yii::$app->getModule('installer')->poweredByName])?>.</p>
+            <p class="pull-left"><?= Yii::t('installerGeneral', 'Made possible by <a href="{0}" target="_blank">{1}</a>', [Yii::$app->getModule('installer')->poweredByWebsite, Yii::$app->getModule('installer')->poweredByName])?>.</p>
         </div>
     </footer>
 

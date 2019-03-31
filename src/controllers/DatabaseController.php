@@ -25,6 +25,11 @@ class DatabaseController extends Controller
 	 */
 	private $config;
 
+	public function init()
+	{
+		parent::init();
+	}
+
 	/**
 	 * Checks if the application has been installed already
 	 * @param $action
@@ -33,13 +38,23 @@ class DatabaseController extends Controller
 	 */
 	public function beforeAction($action)
 	{
-		// Checks if application has been installed successfully
+		if (Yii::$app->cache)
+		{
+			Yii::$app->cache->flush();
+		}
+
 		if (Yii::$app->params[Configuration::APP_INSTALLED])
 		{
 			return $this->redirect(Yii::$app->homeUrl);
 		}
 
-		if ($action->id === 'migrate' || $action->id === 'migrate-up' || $action->id === 'migrate-finished') {
+		if (!isset(Yii::$app->params[Configuration::APP_REQUIREMENTS_MET]) || !Yii::$app->params[Configuration::APP_REQUIREMENTS_MET])
+		{
+			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/requirements/index'));
+		}
+
+		if ($action->id === 'migrate' || $action->id === 'migrate-up' || $action->id === 'migrate-finished')
+		{
 			if (!$this->module->executeMigrations) {
 				return $this->redirect(Yii::$app->urlManager->createUrl('//installer/mailer/index'));
 			}
@@ -58,6 +73,7 @@ class DatabaseController extends Controller
 		{
 			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/database/overview'));
 		}
+
 		return $this->redirect(Yii::$app->urlManager->createUrl('//installer/database/setup'));
 	}
 
@@ -80,14 +96,16 @@ class DatabaseController extends Controller
 		$errorMsg = '';
 		$form = new DatabaseSettings();
 
-		if ($form->load(Yii::$app->request->post())) {
-			if (Yii::$app->request->isAjax) {
+		if ($form->load(Yii::$app->request->post()))
+		{
+			if (Yii::$app->request->isAjax)
+			{
 				Yii::$app->response->format = Response::FORMAT_JSON;
-
 				return ActiveForm::validate($form);
 			}
 
-			if ($form->validate()) {
+			if ($form->validate())
+			{
 				$dsn = "mysql:host=" . $form->hostname . ";dbname=" . $form->database;
 				// Create Test DB Connection
 				Yii::$app->set('db', [
@@ -101,7 +119,8 @@ class DatabaseController extends Controller
 				try {
 					$this->getDatabaseSetting();
 					Yii::$app->db->open();
-					if (InstallerHelper::validDbConnection()) {
+					if (InstallerHelper::validDbConnection())
+					{
 						$this->config['components']['db']['class'] = Connection::class;
 						$this->config['components']['db']['dsn'] = $dsn;
 						$this->config['components']['db']['username'] = $form->username;
@@ -117,22 +136,22 @@ class DatabaseController extends Controller
 
 						return $this->redirect(Yii::$app->urlManager->createUrl('//installer/database/overview'));
 					}
-					else {
-						$errorMsg = 'Incorrect configuration';
+					else
+					{
+						$errorMsg = Yii::t('installerDatabase', 'Incorrect configuration');
 					}
 				}
 				catch (Exception $e) {
 					$errorMsg = $e->getMessage();
 				}
 			}
-			else {
-				$errorMsg = $form->getErrors();
-			}
 		}
+
 		return $this->render('setup', ['model' => $this->getDatabaseSetting(), 'errorMsg' => $errorMsg]);
 	}
 
-	public function actionMigrate(){
+	public function actionMigrate()
+	{
 		return $this->render('migration');
 	}
 
@@ -142,7 +161,8 @@ class DatabaseController extends Controller
 	 * @throws \yii\base\InvalidRouteException
 	 * @throws \yii\console\Exception
 	 */
-	public function actionMigrateUp(){
+	public function actionMigrateUp()
+	{
 		// https://github.com/yiisoft/yii2/issues/1764#issuecomment-42436905
 		$oldApp = \Yii::$app;
 		new \yii\console\Application([
@@ -157,15 +177,16 @@ class DatabaseController extends Controller
 		return $this->redirect(Yii::$app->urlManager->createUrl('//installer/database/migrate-finished'));
 	}
 
-	public function actionMigrateFinished(){
+	public function actionMigrateFinished()
+	{
 		return $this->render('migrationEnd');
 	}
 
 	private function getDatabaseSetting() : DatabaseSettings
 	{
 		$this->config = InstallerHelper::get(Configuration::CONFIG_FILE);
-
 		$form = new DatabaseSettings();
+
 		if(isset($this->config['components']['db']['dsn'])){
 			$dsn = $this->config['components']['db']['dsn'];
 			$form->hostname = $this->getDsnAttribute("host", $dsn);
@@ -181,9 +202,12 @@ class DatabaseController extends Controller
 
 	private function getDsnAttribute($name, $dsn)
 	{
-		if (preg_match('/' . $name . '=([^;]*)/', $dsn, $match)) {
+		if (preg_match('/' . $name . '=([^;]*)/', $dsn, $match))
+		{
 			return $match[1];
-		} else {
+		}
+		else
+		{
 			return null;
 		}
 	}

@@ -1,6 +1,7 @@
 <?php
 namespace weblogic\installer\models;
 
+use Yii;
 use yii\base\Model;
 
 /**
@@ -24,10 +25,10 @@ class DatabaseSettings extends Model
 	public function attributeLabels()
 	{
 		return [
-			'hostname' => 'Hostname',
-			'username' => 'Username',
-			'password' => 'Password',
-			'database' => 'Name of Database'
+			'hostname' => Yii::t('installerDatabase', 'Hostname'),
+			'username' => Yii::t('installerGeneral', 'Username'),
+			'password' => Yii::t('installerGeneral', 'Password'),
+			'database' => Yii::t('installerDatabase', 'Database name')
 		];
 	}
 }

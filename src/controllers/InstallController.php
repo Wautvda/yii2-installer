@@ -28,6 +28,11 @@ class InstallController extends Controller
 		];
 	}
 
+	public function init()
+	{
+		parent::init();
+	}
+
 	/**
 	 * Checks if the application has been installed already
 	 * @param $action
@@ -37,7 +42,8 @@ class InstallController extends Controller
 	public function beforeAction($action)
 	{
 		// Checks if application has been installed successfully
-		if (Yii::$app->params[Configuration::APP_INSTALLED]) {
+		if (Yii::$app->params[Configuration::APP_INSTALLED])
+		{
 			return $this->redirect(Yii::$app->homeUrl);
 		}
 

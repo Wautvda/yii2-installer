@@ -13,10 +13,10 @@ if(!isset($model->timeZoneIndex)){
 
 <div id="database-form" class="panel panel-default">
 	<div class="panel-heading">
-		<h2 class="text-center">Mailer Configuration</h2>
+		<h2 class="text-center"><?= Yii::t('installerSettings','Settings Configuration') ?></h2>
 	</div>
 	<div class="panel-body">
-		<p>Adapt the Mailer configuration. If you’re not sure about these, please contact your administrator or web host.</p>
+		<p><?= Yii::t('installerSettings','Please adapt your settings if necessary.') ?></p>
 
 		<?php
 			$form = ActiveForm::begin([
@@ -30,7 +30,7 @@ if(!isset($model->timeZoneIndex)){
 				    'autofocus' => 'on',
                     'autocomplete' => 'off',
                     'class' => 'form-control',
-                ])->hint('The application name displayed on the website') ?>
+                ]) ?>
 		</div>
 
         <div class="form-group">
@@ -40,10 +40,10 @@ if(!isset($model->timeZoneIndex)){
 				[
 					'autocomplete' => 'off',
 					'class' => 'form-control'
-				])->hint('The timezone most frequently used in the application') ?>
+				]) ?>
         </div>
 
-		<?= Html::submitButton('Next', ['class' => 'btn btn-primary']) ?>
+		<?= Html::submitButton(Yii::t('installerGeneral','Next'), ['class' => 'btn btn-primary']) ?>
 
 		<?php ActiveForm::end(); ?>
 	</div>

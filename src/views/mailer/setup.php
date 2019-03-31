@@ -1,7 +1,6 @@
 <?php
 /**
  * @var $model \weblogic\installer\models\MailerSettings
- * @var $errorMsg string
  */
 
 use yii\helpers\Html;
@@ -10,16 +9,10 @@ use yii\widgets\ActiveForm;
 
 <div id="database-form" class="panel panel-default">
 	<div class="panel-heading">
-		<h2 class="text-center">Mailer Configuration</h2>
+		<h2 class="text-center"><?= Yii::t('installerMailer','Mailer Configuration') ?></h2>
 	</div>
 	<div class="panel-body">
-		<p>Adapt the Mailer configuration. If you’re not sure about these, please contact your administrator or web host.</p>
-
-		<?php if (!empty($errorMsg)) { ?>
-            <div class="alert alert-danger">
-                <strong><?= $errorMsg ?></strong>
-            </div>
-		<?php } ?>
+		<p><?= Yii::t('installerMailer','Please enter your mail configuration settings. If you’re not sure about these, please contact your administrator or web host.') ?></p>
 
 		<?php
 			$form = ActiveForm::begin([
@@ -27,7 +20,7 @@ use yii\widgets\ActiveForm;
             ]);
 		?>
 
-		<hr/>
+		<hr />
 
 		<div class="form-group">
 			<?=
@@ -35,16 +28,27 @@ use yii\widgets\ActiveForm;
 				    'autofocus' => 'on',
                     'autocomplete' => 'off',
                     'class' => 'form-control',
-                ])->hint('The email host') ?>
+                ]) ?>
 		</div>
+
+        <hr />
 
 		<div class="form-group">
 			<?=
 				$form->field($model, 'username')->textInput([
 				    'autocomplete' => 'off',
                     'class' => 'form-control',
-                ])->hint('Your mailer username') ?>
+                ]) ?>
 		</div>
+
+        <div class="form-group">
+			<?=
+			$form->field($model, 'password')->passwordInput([
+				'class' => 'form-control',
+			]) ?>
+        </div>
+
+        <hr />
 
         <div class="form-group">
 			<?=
@@ -52,7 +56,7 @@ use yii\widgets\ActiveForm;
 				'autocomplete' => 'off',
 				'type' => 'number',
 				'class' => 'form-control',
-			])->hint('Port of the mailer') ?>
+			]) ?>
         </div>
 
         <div class="form-group">
@@ -66,33 +70,17 @@ use yii\widgets\ActiveForm;
 				[
 					'autocomplete' => 'off',
 					'class' => 'form-control'
-				])->hint('Can be ssl, tls or nothing (ssl or tls are preferred if possible)') ?>
+				])->hint(Yii::t('installerMailer','Encryption when sending emails. Ssl or tls are advised.')) ?>
         </div>
 
-		<hr/>
-
-		<div class="form-group">
-			<?=
-				$form->field($model, 'password')->passwordInput([
-				    'class' => 'form-control',
-                ])->hint('Your mailer password') ?>
-		</div>
-
-        <div class="form-group">
-			<?=
-			$form->field($model, 'password_confirm')->passwordInput([
-				'class' => 'form-control',
-			])->hint('Confirm mailer password') ?>
-        </div>
-
-        <hr/>
+        <hr />
 
         <div class="form-group">
 			<?=
 			$form->field($model, 'from_email')->textInput([
 				'autocomplete' => 'off',
 				'class' => 'form-control',
-			])->hint('Name shown to the receiver of messages sent via the application') ?>
+			])->hint(Yii::t('installerMailer','Email shown to reply to when sending from the application')) ?>
         </div>
 
         <div class="form-group">
@@ -100,12 +88,12 @@ use yii\widgets\ActiveForm;
 			$form->field($model, 'from_name')->textInput([
 				'autocomplete' => 'off',
 				'class' => 'form-control',
-			])->hint('Name shown to the receiver of messages sent via the application') ?>
+			])->hint(Yii::t('installerMailer','Name shown to the receiver of messages sent via the application')) ?>
         </div>
 
 		<hr/>
 
-		<?= Html::submitButton('Next', ['class' => 'btn btn-primary']) ?>
+		<?= Html::submitButton(Yii::t('installerGeneral','Next'), ['class' => 'btn btn-primary']) ?>
 
 		<?php ActiveForm::end(); ?>
 	</div>

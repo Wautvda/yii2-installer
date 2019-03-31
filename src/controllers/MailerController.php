@@ -23,21 +23,32 @@ class MailerController extends Controller
 	 */
 	public function beforeAction($action)
 	{
-		// Flush caches
-		if (Yii::$app->cache) {
+		if (Yii::$app->cache)
+		{
 			Yii::$app->cache->flush();
 		}
 
-		// Checks if application has been installed successfully
 		if (Yii::$app->params[Configuration::APP_INSTALLED])
 		{
 			return $this->redirect(Yii::$app->homeUrl);
 		}
-		if(!InstallerHelper::validDbConnection()) {
+
+		if (!isset(Yii::$app->params[Configuration::APP_REQUIREMENTS_MET]) || !Yii::$app->params[Configuration::APP_REQUIREMENTS_MET])
+		{
+			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/requirements/index'));
+		}
+
+		if(!InstallerHelper::validDbConnection())
+		{
 			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/database/index'));
 		}
 
 		return parent::beforeAction($action);
+	}
+
+	public function init()
+	{
+		parent::init();
 	}
 
 	/**
@@ -53,17 +64,18 @@ class MailerController extends Controller
 	{
 		$config = InstallerHelper::get(Configuration::CONFIG_FILE);
 		$params = InstallerHelper::get(Configuration::PARAMS_FILE);
-
 		$mailer = new MailerSettings();
-		if ($mailer->load(Yii::$app->request->post())) {
-			if (Yii::$app->request->isAjax) {
-				Yii::$app->response->format = Response::FORMAT_JSON;
 
+		if ($mailer->load(Yii::$app->request->post()))
+		{
+			if (Yii::$app->request->isAjax)
+			{
+				Yii::$app->response->format = Response::FORMAT_JSON;
 				return ActiveForm::validate($mailer);
 			}
 
-			if ($mailer->validate()) {
-				// Write Config
+			if ($mailer->validate())
+			{
 				$config['components']['mailer']['transport']['class'] = Swift_SmtpTransport::class;
 				$config['components']['mailer']['transport']['host'] = $mailer->host;
 				$config['components']['mailer']['transport']['username'] = $mailer->username;
@@ -78,6 +90,7 @@ class MailerController extends Controller
 				return $this->redirect(Yii::$app->urlManager->createUrl('//installer/mailer/index'));
 			}
 		}
+
 		return $this->render('setup', ['model' => $this->getMailerSetting()]);
 	}
 
@@ -85,7 +98,6 @@ class MailerController extends Controller
 	{
 		$config = InstallerHelper::get(Configuration::CONFIG_FILE);
 		$params = InstallerHelper::get(Configuration::PARAMS_FILE);
-
 		$mailer = new MailerSettings();
 
 		if(isset($config['components']['mailer']['transport']['host']))

@@ -30,21 +30,30 @@ class SettingsController extends Controller
 	 */
 	public function beforeAction($action)
 	{
-		// Flush caches
 		if (Yii::$app->cache) {
 			Yii::$app->cache->flush();
 		}
 
-		// Checks if application has been installed successfully
 		if (Yii::$app->params[Configuration::APP_INSTALLED])
 		{
 			return $this->redirect(Yii::$app->homeUrl);
 		}
+
+		if (!isset(Yii::$app->params[Configuration::APP_REQUIREMENTS_MET]) || !Yii::$app->params[Configuration::APP_REQUIREMENTS_MET])
+		{
+			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/requirements/index'));
+		}
+
 		if(!InstallerHelper::validDbConnection()) {
 			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/database/index'));
 		}
 
 		return parent::beforeAction($action);
+	}
+
+	public function init()
+	{
+		parent::init();
 	}
 
 	/**
@@ -61,10 +70,11 @@ class SettingsController extends Controller
 		$config = InstallerHelper::get(Configuration::CONFIG_FILE);
 
 		$settings = new GeneralSettings();
-		if ($settings->load(Yii::$app->request->post())) {
-			if (Yii::$app->request->isAjax) {
+		if ($settings->load(Yii::$app->request->post()))
+		{
+			if (Yii::$app->request->isAjax)
+			{
 				Yii::$app->response->format = Response::FORMAT_JSON;
-
 				return ActiveForm::validate($settings);
 			}
 
@@ -73,7 +83,8 @@ class SettingsController extends Controller
 				$settings->timeZone = $this->timeZones[$settings->timeZoneIndex];
 			}
 
-			if ($settings->validate()) {
+			if ($settings->validate())
+			{
 				$config[Configuration::APP_NAME] = $settings->applicationName;
 				$config[Configuration::APP_TIMEZONE] = $this->timeZones[$settings->timeZoneIndex];
 
@@ -82,6 +93,7 @@ class SettingsController extends Controller
 				return $this->redirect(Yii::$app->urlManager->createUrl('//installer/settings/finish'));
 			}
 		}
+
 		return $this->render('setup', ['model' => $this->getGeneralSetting()]);
 	}
 

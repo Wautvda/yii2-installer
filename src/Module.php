@@ -24,10 +24,10 @@ class Module extends BaseModule
     /**
      * {@inheritdoc}
      */
+
+
     public function init()
     {
         parent::init();
-
-        // custom initialization code goes here
     }
 }
