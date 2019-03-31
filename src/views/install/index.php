@@ -16,8 +16,8 @@ use yii\helpers\Html;
         <p><?= Yii::t('installerInstall','This wizard will install and configure your application.') ?></p>
         <p><?= Yii::t('installerInstall','To continue, click Next.') ?></p>
 
-        <div class="text-center">
-			<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="fa fa-arrow-circle-right"></i>', ['requirements/index'], ['class' => 'btn btn-lg btn-primary']) ?>
+        <div>
+			<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="far fa-arrow-alt-circle-right"></i>', ['requirements/index'], ['class' => 'btn btn-primary', 'style'=>'float: right']) ?>
         </div>
     </div>
 

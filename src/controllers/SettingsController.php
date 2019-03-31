@@ -51,11 +51,6 @@ class SettingsController extends Controller
 		return parent::beforeAction($action);
 	}
 
-	public function init()
-	{
-		parent::init();
-	}
-
 	/**
 	 * Database action is responsible for all database related stuff.
 	 * Checking given database settings, writing them into a config file.

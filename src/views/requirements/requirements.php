@@ -71,8 +71,8 @@
 		</table>
 
 		<?php if ($summary['errors'] === 0): ?>
-			<div class="text-center">
-				<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="fa fa-arrow-circle-right"></i>', ['requirements/finish'], ['class' => 'btn btn-lg btn-primary']) ?>
+            <div>
+				<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="far fa-arrow-alt-circle-right"></i>', ['requirements/finish'], ['class' => 'btn btn-primary', 'style'=>'float: right']) ?>
 			</div>
 		<?php else: ?>
 			<div class="alert alert-danger">

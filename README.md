@@ -33,6 +33,7 @@ Refer to [Documentation](docs/index.md)
 
 ## Roadmap
 
+- [x] Add translations
 - [ ] Installation wizard
 - [ ] Add admin user
 

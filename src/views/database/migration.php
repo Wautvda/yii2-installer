@@ -11,7 +11,7 @@ use yii\helpers\Html;
 		<p><?= Yii::t('installerDatabase','The next step will execute database updates. Do not refresh the page!') ?></p>
 
 		<div>
-			<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="fa fa-arrow-circle-right"></i>', ['database/migrate-up'], ['class' => 'btn btn-lg btn-primary']) ?>
+			<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="far fa-arrow-alt-circle-right"></i>', ['database/migrate-up'], ['class' => 'btn btn-primary', 'style'=>'float: right']) ?>
 		</div>
 	</div>
 </div>

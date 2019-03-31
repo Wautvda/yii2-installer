@@ -43,7 +43,10 @@ if(!isset($model->timeZoneIndex)){
 				]) ?>
         </div>
 
-		<?= Html::submitButton(Yii::t('installerGeneral','Next'), ['class' => 'btn btn-primary']) ?>
+        <div>
+			<?= Html::a(Yii::t('installerGeneral','Cancel settings adaptation'), ['settings/index'], ['class' => 'btn btn-danger', 'style'=>'float: left']) ?>
+			<?= Html::submitButton(Yii::t('installerGeneral','Next') . ' <i class="far fa-arrow-alt-circle-right"></i>', ['class' => 'btn btn-primary', 'style'=>'float: right']) ?>
+        </div>
 
 		<?php ActiveForm::end(); ?>
 	</div>

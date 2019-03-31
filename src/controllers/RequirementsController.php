@@ -29,11 +29,6 @@ class RequirementsController extends Controller
 		return parent::beforeAction($action);
 	}
 
-	public function init()
-	{
-		parent::init();
-	}
-
 	/**
 	 * Prerequisites check for application requirement
 	 */

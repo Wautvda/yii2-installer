@@ -28,11 +28,6 @@ class InstallController extends Controller
 		];
 	}
 
-	public function init()
-	{
-		parent::init();
-	}
-
 	/**
 	 * Checks if the application has been installed already
 	 * @param $action

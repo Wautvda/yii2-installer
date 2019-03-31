@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Cancel settings adaptation' => 'Wijzigingen annuleren',
     'Edit' => 'Wijzigen',
     'Installation wizard' => 'Installatie wizard',
     'Made possible by <a href="{0}" target="_blank">{1}</a>' => 'Mogelijk gemaakt door <a href="{0}" target="_blank">{1}</a>',

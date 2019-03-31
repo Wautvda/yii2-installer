@@ -22,8 +22,8 @@ use yii\widgets\DetailView; ?>
 		]) ?>
 
 		<div>
-			<?= Html::a(Yii::t('installerGeneral','Edit') . ' <i class="fa fa-arrow-circle-right"></i>', ['database/setup'], ['class' => 'btn btn-lg btn-primary']) ?>
-			<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="fa fa-arrow-circle-right"></i>', ['database/migrate'], ['class' => 'btn btn-lg btn-primary']) ?>
+            <?= Html::a(Yii::t('installerGeneral','Edit'), ['database/setup'], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="far fa-arrow-alt-circle-right"></i>', ['database/migrate'], ['class' => 'btn btn-primary', 'style'=>'float: right']) ?>
 		</div>
 	</div>
 </div>

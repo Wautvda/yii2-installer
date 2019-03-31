@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
 		<div class="text-center">
 			<br/>
-			<?= Html::a(Yii::t('installerSettings','Go to website'), Yii::$app->urlManager->createUrl('//site/index'), ['class' => 'btn btn-success']) ?>
+			<?= Html::a(Yii::t('installerSettings','Go to website'). ' <i class="far fa-arrow-alt-circle-right"></i>', Yii::$app->urlManager->createUrl('//site/index'), ['class' => 'btn btn-success']) ?>
 		</div>
 	</div>
 </div>

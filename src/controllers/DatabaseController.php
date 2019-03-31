@@ -25,11 +25,6 @@ class DatabaseController extends Controller
 	 */
 	private $config;
 
-	public function init()
-	{
-		parent::init();
-	}
-
 	/**
 	 * Checks if the application has been installed already
 	 * @param $action
