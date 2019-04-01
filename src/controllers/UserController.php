@@ -57,6 +57,7 @@ class UserController extends Controller
 	public function actionIndex()
 	{
 		$user = new UserModel();
+		$user->role = $this->module->addAdminUserDefaultRole;
 
 		if ($user->load(Yii::$app->request->post()))
 		{

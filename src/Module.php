@@ -25,6 +25,10 @@ class Module extends BaseModule
 	 * @var boolean Install admin user
 	 */
 	public $addAdminUser = true;
+	/**
+	 * @var string Default user role
+	 */
+	public $addAdminUserDefaultRole = 'Admin';
 
 	/**
      * {@inheritdoc}

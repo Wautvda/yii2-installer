@@ -14,3 +14,6 @@ Executes migration as long as the migration configuration is ok (see [migrations
 
 #### addAdminUser (type: `bool`, default: `true`)
 Adds a administrator user. This is helpful when using yii2-usuario or yii2-user as user administration packages(see [user requirements](../installation/user.md))
+
+### addAdminUserDefaultRole (type: `string`, default: `Admin`)
+The default filled in role when adding a user.
