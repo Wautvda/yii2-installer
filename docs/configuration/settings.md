@@ -11,3 +11,6 @@ Setting this attribute will allow users to configure their login process with tw
 
 #### executeMigrations (type: `bool`, default: `true`)
 Executes migration as long as the migration configuration is ok (see [migrations](../installation/migrations.md))
+
+#### addAdminUser (type: `bool`, default: `true`)
+Adds a administrator user. This is helpful when using yii2-usuario or yii2-user as user administration packages(see [user requirements](../installation/user.md))

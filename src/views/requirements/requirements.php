@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="panel-body">
-		<h3><?= Yii::t('installerSystemCheck', 'Description') ?></h3>
+		<h3><?= Yii::t('installerGeneral', 'Description') ?></h3>
 		<p>
             <?= Yii::t('installerSystemCheck', 'This script checks if your server configuration meets the requirements for running the  application. 
             It checks if the server is running the right version of PHP, if appropriate PHP extensions have been loaded, and if php.ini file settings are correct.') ?>

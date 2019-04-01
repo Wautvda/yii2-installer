@@ -21,11 +21,14 @@ class Module extends BaseModule
 	 * @var boolean Should migrations be executed or not
 	 */
 	public $executeMigrations = true;
-    /**
+	/**
+	 * @var boolean Install admin user
+	 */
+	public $addAdminUser = true;
+
+	/**
      * {@inheritdoc}
      */
-
-
     public function init()
     {
         parent::init();

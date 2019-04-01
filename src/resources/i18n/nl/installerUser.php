@@ -17,15 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Cancel settings adaptation' => 'Wijzigingen annuleren',
-    'Description' => 'Omschrijving',
-    'Edit' => 'Wijzigen',
-    'Installation wizard' => 'Installatie wizard',
-    'Made possible by <a href="{0}" target="_blank">{1}</a>' => 'Mogelijk gemaakt door <a href="{0}" target="_blank">{1}</a>',
-    'Next' => 'Volgende',
-    'Password' => 'Wachtwoord',
-    'Password confirm' => 'Wachtwoord bevestigen',
-    'Skip' => 'Overslaan',
-    'Username' => 'Gebruikersnaam',
-    'Warning' => 'Waarschuwing',
+    'Add a user to the system' => 'Voeg een gebruiker toe aan het systeem',
+    'Cannot assign role "{0}" as the AuthManager is not configured in your application' => 'Kan rol "{0}" niet toewijzen aangezien AuthManager niet geconfigureerd is voor jouw applicatie.',
+    'Email' => 'Email',
+    'Role the user needs to have. If this role doesn\'t exist it will be made' => 'De rol die aan de gebruiker wordt toegewezen. Als de rol niet bestaat wordt deze aangemaakt',
+    'User setup' => 'Gebruiker installatie',
+    'When empty a password will be generated' => 'Indien leeg zal een paswoord gegenereerd worden',
+    'role' => 'Rol',
 ];

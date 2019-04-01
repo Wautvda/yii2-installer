@@ -44,7 +44,8 @@ class SettingsController extends Controller
 			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/requirements/index'));
 		}
 
-		if(!InstallerHelper::validDbConnection()) {
+		if(!InstallerHelper::validDbConnection())
+		{
 			return $this->redirect(Yii::$app->urlManager->createUrl('//installer/database/index'));
 		}
 

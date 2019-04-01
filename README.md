@@ -12,6 +12,7 @@ Yii2-Installer provides a web interface for installation of a yii2 project. It i
     - Application Name
     - Admin Email
 - Stores all the configurations on file
+- Creates admin user (see [user requirements](docs/installation/user.md))
 
 ## Installation
 
@@ -35,7 +36,7 @@ Refer to [Documentation](docs/index.md)
 
 - [x] Add translations
 - [ ] Installation wizard
-- [ ] Add admin user
+- [x] Add user
 
 ## Changelog
 

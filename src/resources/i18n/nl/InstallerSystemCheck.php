@@ -22,7 +22,6 @@ return [
     'Cannot continue until the requirements are met. Please contact your IT responsible.' => 'De installer kan niet worden vervolgt zolang niet aan deze vereisten werd voldaan. Gelieve de IT verandtwoordelijke te contacteren',
     'Conclusion' => 'Conclusie',
     'Congratulations! Your server configuration satisfies all requirements.' => 'Proficiat! Jouw server voldoet aan alle vereisten.',
-    'Description' => 'Omschrijving',
     'Details' => 'Details',
     'Failed' => 'Gefaald',
     'Memo' => 'Memo',

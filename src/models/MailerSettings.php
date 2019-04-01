@@ -9,7 +9,6 @@ class MailerSettings extends Model
 	public $host;
 	public $username;
 	public $password;
-	public $password_confirm;
 	public $port;
 	public $encryption;
 	public $from_email;

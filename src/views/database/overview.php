@@ -10,6 +10,7 @@ use yii\widgets\DetailView; ?>
 		<h2 class="text-center"><?= Yii::t('installerDatabase','Database Configuration') ?></h2>
 	</div>
 	<div class="panel-body">
+        <h3><?= Yii::t('installerGeneral', 'Description') ?></h3>
 		<p><?= Yii::t('installerDatabase','These are the current connection details. If you’re not sure about these, please contact your administrator or web host.') ?></p>
 
 		<?= DetailView::widget([

@@ -11,6 +11,7 @@ use yii\widgets\DetailView; ?>
 		<h2 class="text-center"><?= Yii::t('installerSettings','Settings Configuration') ?></h2>
 	</div>
 	<div class="panel-body">
+        <h3><?= Yii::t('installerGeneral', 'Description') ?></h3>
 		<p><?= Yii::t('installerSettings','These are the current settings. You can adapt them by clicking on "Edit"') ?></p>
 
 		<?= DetailView::widget([

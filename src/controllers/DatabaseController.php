@@ -6,6 +6,7 @@ use weblogic\installer\helpers\enums\Configuration;
 use weblogic\installer\helpers\InstallerHelper;
 use weblogic\installer\models\DatabaseSettings;
 use Yii;
+use yii\console\Application;
 use yii\db\Connection;
 use yii\db\Exception;
 use yii\web\Controller;
@@ -160,7 +161,7 @@ class DatabaseController extends Controller
 	{
 		// https://github.com/yiisoft/yii2/issues/1764#issuecomment-42436905
 		$oldApp = \Yii::$app;
-		new \yii\console\Application([
+		new Application([
 			'id'            => 'Command runner',
 			'basePath'      => '@app',
 			'components'    => [

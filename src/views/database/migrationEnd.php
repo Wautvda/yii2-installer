@@ -8,7 +8,9 @@ use yii\helpers\Html;
 		<h2 class="text-center"><?= Yii::t('installerDatabase','Database Configuration') ?></h2>
 	</div>
 	<div class="panel-body">
-		<p><?= Yii::t('installerDatabase','Migration succesfull!') ?></p>
+        <div class="alert alert-success">
+			<?= Yii::t('installerDatabase','Migration succesfull!') ?>
+        </div>
 
 		<div>
 			<?= Html::a(Yii::t('installerGeneral','Next') . ' <i class="far fa-arrow-alt-circle-right"></i>', ['mailer/index'], ['class' => 'btn btn-primary', 'style'=>'float: right']) ?>
