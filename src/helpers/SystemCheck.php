@@ -13,7 +13,7 @@ class SystemCheck
 	 */
 	public static function getResults() : array
 	{
-		require_once dirname(__FILE__) . '/../../vendor/yiisoft/yii2/requirements/YiiRequirementChecker.php';
+		require_once __DIR__ . '/../../../../yiisoft/yii2/requirements/YiiRequirementChecker.php';
 		$requirementsChecker = new YiiRequirementChecker();
 
 		$requirements = array(

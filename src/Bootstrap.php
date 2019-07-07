@@ -34,7 +34,7 @@ class Bootstrap implements BootstrapInterface
 			$app->get('i18n')->translations['installer*'] = [
 				'class' => PhpMessageSource::class,
 				'basePath' => __DIR__ . '/resources/i18n',
-				'sourceLanguage' => 'en-US',
+				'sourceLanguage' => 'en',
 			];
 		}
 	}
