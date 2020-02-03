@@ -17,7 +17,7 @@ class MailerSettings extends Model
 	public function rules()
 	{
 		return [
-			[['host','username', 'password', 'password_confirm', 'port', 'encryption'], 'required'],
+			[['host','username', 'password', 'port', 'encryption'], 'required'],
 			[['host', 'encryption', 'username', 'from_name'], 'string', 'max' => 128],
 			[['from_email'], 'email'],
 			[['password'], 'safe'],
