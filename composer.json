@@ -1,7 +1,7 @@
 {
   "name": "weblogic/yii2-installer",
   "type": "yii2-extension",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "description": "Yii2 installer for Yii2 applications",
   "keywords": [
     "yii2",
@@ -17,8 +17,10 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "yiisoft/yii2": "*",
-    "yiisoft/yii2-swiftmailer": "*"
+    "yiisoft/yii2": "^2.0.30",
+    "ext-zend-opcache": "*",
+    "yidas/yii2-composer-bower-skip": "^2.0",
+    "yiisoft/mailer-symfony": "^2.0"
   },
   "suggest": {
     "2amigos/yii2-usuario": "Needed when making use of the Add user feature during installation"
@@ -26,6 +28,11 @@
   "autoload": {
     "psr-4": {
       "weblogic\\installer\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
     }
   }
 }

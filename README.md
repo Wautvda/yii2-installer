@@ -35,7 +35,7 @@ Refer to [Documentation](docs/index.md)
 ## Roadmap
 
 - [x] Add translations
-- [ ] Installation wizard
+- [x] Installation wizard
 - [x] Add user
 
 ## Changelog
