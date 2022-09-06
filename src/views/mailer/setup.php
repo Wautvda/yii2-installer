@@ -63,14 +63,13 @@ use yii\widgets\ActiveForm;
 			<?=
 			$form->field($model, 'encryption')->dropdownList(
 				[
-					'ssl' => 'ssl',
-					'tls' => 'tls',
-					null => 'none'
+					'smtps' => 'smtps',
+					'smtp' => 'smtp'
 				],
 				[
 					'autocomplete' => 'off',
 					'class' => 'form-control'
-				])->hint(Yii::t('installerMailer','Encryption when sending emails. Ssl or tls are advised.')) ?>
+				])->hint(Yii::t('installerMailer','Encryption when sending emails. Smtps is advised.')) ?>
         </div>
 
         <hr />

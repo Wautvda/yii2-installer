@@ -2,7 +2,6 @@
 
 namespace weblogic\installer\controllers;
 
-use Swift_SmtpTransport;
 use weblogic\installer\helpers\enums\Configuration;
 use weblogic\installer\helpers\InstallerHelper;
 use weblogic\installer\models\MailerSettings;
@@ -71,11 +70,11 @@ class MailerController extends Controller
 
 			if ($mailer->validate())
 			{
-				$config['components']['mailer']['transport']['class'] = Swift_SmtpTransport::class;
-				$config['components']['mailer']['transport']['host'] = $mailer->host;
-				$config['components']['mailer']['transport']['username'] = $mailer->username;
-				$config['components']['mailer']['transport']['password'] = $mailer->password;
-				$config['components']['mailer']['transport']['port'] = $mailer->port;
+				$config['components']['symfony/mailer']['esmtpTransport']['scheme'] = 'smtps';
+				$config['components']['symfony/mailer']['esmtpTransport']['host'] = $mailer->host;
+				$config['components']['symfony/mailer']['esmtpTransport']['username'] = $mailer->username;
+				$config['components']['symfony/mailer']['esmtpTransport']['password'] = $mailer->password;
+				$config['components']['symfony/mailer']['esmtpTransport']['port'] = $mailer->port;
 				$params['supportEmail'] = $mailer->from_email;
 				$params['supportName'] = $mailer->from_name;
 
@@ -95,29 +94,29 @@ class MailerController extends Controller
 		$params = InstallerHelper::get(Configuration::PARAMS_FILE);
 		$mailer = new MailerSettings();
 
-		if(isset($config['components']['mailer']['transport']['host']))
+		if(isset($config['components']['symfony/mailer']['esmtpTransport']['host']))
 		{
-			$mailer->host = $config['components']['mailer']['transport']['host'];
+			$mailer->host = $config['components']['symfony/mailer']['esmtpTransport']['host'];
 		}
 
-		if(isset($config['components']['mailer']['transport']['username']))
+		if(isset($config['components']['symfony/mailer']['esmtpTransport']['username']))
 		{
-			$mailer->username = $config['components']['mailer']['transport']['username'];
+			$mailer->username = $config['components']['symfony/mailer']['esmtpTransport']['username'];
 		}
 
-		if(isset($config['components']['mailer']['transport']['port']))
+		if(isset($config['components']['symfony/mailer']['esmtpTransport']['port']))
 		{
-			$mailer->port = $config['components']['mailer']['transport']['port'];
+			$mailer->port = $config['components']['symfony/mailer']['esmtpTransport']['port'];
 		}
 
-		if(isset($config['components']['mailer']['transport']['encryption']))
+		if(isset($config['components']['symfony/mailer']['esmtpTransport']['encryption']))
 		{
-			$mailer->encryption = $config['components']['mailer']['transport']['encryption'];
+			$mailer->encryption = $config['components']['symfony/mailer']['esmtpTransport']['encryption'];
 		}
 
-		if(isset($config['components']['mailer']['transport']['encryption']))
+		if(isset($config['components']['symfony/mailer']['esmtpTransport']['encryption']))
 		{
-			$mailer->encryption = $config['components']['mailer']['transport']['encryption'];
+			$mailer->encryption = $config['components']['symfony/mailer']['esmtpTransport']['encryption'];
 		}
 
 		$mailer->from_email = $params['supportEmail'];

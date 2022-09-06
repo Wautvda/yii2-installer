@@ -23,7 +23,7 @@ class MailerSettings extends Model
 			[['password'], 'safe'],
 			[['port'], 'integer'],
 
-			[['encryption'],  'in', 'range' => ['ssl', 'tls', null]],
+			[['encryption'],  'in', 'range' => ['smtps', 'smtp']],
 		];
 	}
 
