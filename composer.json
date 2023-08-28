@@ -19,8 +19,10 @@
     "php": ">=7.0.0",
     "yiisoft/yii2": "^2.0.30",
     "ext-zend-opcache": "*",
-    "yidas/yii2-composer-bower-skip": "^2.0",
     "yiisoft/mailer-symfony": "^2.0"
+  },
+  "require-dev": {
+    "demokn/yii2-composer-asset": "*"
   },
   "suggest": {
     "2amigos/yii2-usuario": "Needed when making use of the Add user feature during installation"

@@ -10,6 +10,8 @@ use weblogic\installer\helpers\enums\Configuration;
 use weblogic\installer\helpers\InstallerHelper;
 use weblogic\installer\models\UserModel;
 use Yii;
+use yii\base\InvalidConfigException;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
@@ -22,8 +24,8 @@ class UserController extends Controller
 	/**
 	 * Checks if the application has been installed already
 	 * @param $action
-	 * @return bool|\yii\web\Response
-	 * @throws \yii\web\BadRequestHttpException
+	 * @return bool|Response
+	 * @throws BadRequestHttpException
 	 */
 	public function beforeAction($action)
 	{
@@ -88,7 +90,7 @@ class UserController extends Controller
 	 * Creates a new admin user
 	 * @param UserModel $userModel
 	 * @return array
-	 * @throws \yii\base\InvalidConfigException
+	 * @throws InvalidConfigException
 	 */
 	private function createAdminUser(UserModel $userModel) : array
 	{

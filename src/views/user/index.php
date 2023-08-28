@@ -1,9 +1,10 @@
 <?php
 /**
- * @var $model \weblogic\installer\models\UserModel
+ * @var $model UserModel
  * @var $errors array
  */
 
+use weblogic\installer\models\UserModel;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
